@@ -33,10 +33,14 @@ func _physics_process(delta):
 				print("The player is now in the past")
 				collision_layer = 2
 				collision_mask = 2
+				$"../TileMapPresent".hide()
+				$"../TileMapPast".show()
 			elif collision_layer == 2 and collision_mask == 2:
 				print("The player is now in the present")
 				collision_layer = 1
 				collision_mask = 1
+				$"../TileMapPast".hide()
+				$"../TileMapPresent".show()
 			else:
 				print("Error in time swapping")
 
