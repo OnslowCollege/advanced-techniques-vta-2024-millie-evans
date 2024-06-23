@@ -42,3 +42,5 @@ time_travel={
 
 2d_physics/layer_1="Present"
 2d_physics/layer_2="Past"
+2d_physics/layer_3="Present_crush"
+2d_physics/layer_4="Past_crush"
