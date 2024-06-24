@@ -49,7 +49,4 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if $StuckDetector1 and $StuckDetector2 and $StuckDetector3 and $StuckDetector4:
-		print("huh")
-
 	move_and_slide()

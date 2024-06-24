@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cis30edbmpyg3"]
+[gd_scene load_steps=8 format=3 uid="uid://cis30edbmpyg3"]
 
 [ext_resource type="Texture2D" uid="uid://bwkr8x333w7c" path="res://icon.svg" id="1_5ol5t"]
 [ext_resource type="PackedScene" uid="uid://dbjin8y5w1llq" path="res://player.tscn" id="1_up7vw"]
@@ -530,6 +530,10 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_dm42a")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7g0a5"]
+radius = 8.0
+height = 24.0
+
 [node name="MainNode" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_up7vw")]
@@ -544,3 +548,8 @@ visible = false
 tile_set = SubResource("TileSet_ihidy")
 format = 2
 layer_0/tile_data = PackedInt32Array(131068, 393216, 1, 131069, 393216, 1, 131070, 393216, 1, 131071, 393216, 1, 65536, 393216, 1, 65537, 393216, 1, 65538, 393216, 1, 65539, 393216, 1, 3, 393216, 1, 4, 393216, 1, -65532, 393216, 1, -65531, 393216, 1, -131067, 393216, 1, -131066, 393216, 1, -131065, 393216, 1, -131064, 393216, 1, 65540, 393216, 1, 65541, 393216, 1, 5, 393216, 1, 131075, 393216, 1, 131076, 393216, 1, 131077, 393216, 1, 131078, 393216, 1, 65542, 393216, 1, 6, 393216, 1, -65530, 393216, 1, -65529, 393216, 1, 7, 393216, 1, 65543, 393216, 1, 131079, 393216, 1, 131080, 393216, 1, 65544, 393216, 1, 8, 393216, 1, -65528, 393216, 1, 131074, 393216, 1, 131073, 393216, 1, 131072, 393216, 1, 196607, 393216, 1, 196606, 393216, 1, 196605, 393216, 1, 196604, 393216, 1)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CapsuleShape2D_7g0a5")
