@@ -5,22 +5,24 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const PAST = 1
 const PRESENT = 2
-var stuck_checker = preload("res://StuckChecker.tscn")
+
+func _ready():
+	$StuckChecker.collision_layer = 3
+	$StuckChecker.collision_mask = 3
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func change_time(layer):
-	var stuck_checker_instance = stuck_checker.instantiate()
-	add_child(stuck_checker_instance)
-	print(stuck_checker_instance.global_position, position)
-	stuck_checker_instance.collision_layer = 1
-	stuck_checker_instance.collision_mask = 1
-	var is_stuck = stuck_checker_instance.get_overlapping_bodies()
-	stuck_checker_instance.queue_free()
+	$StuckChecker.collision_layer = layer
+	$StuckChecker.collision_mask = layer
+	var is_stuck = $StuckChecker.get_overlapping_bodies()
+	is_stuck.erase($".")
 	print(is_stuck)
+	$StuckChecker.collision_layer = 3
+	$StuckChecker.collision_mask = 3
 	if is_stuck:
-		print("a")
+		print("Player cannot change layer")
 	else:
 		collision_layer = layer
 		collision_mask = layer

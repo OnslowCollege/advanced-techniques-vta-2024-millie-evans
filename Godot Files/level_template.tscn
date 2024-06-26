@@ -1,14 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cis30edbmpyg3"]
+[gd_scene load_steps=8 format=3 uid="uid://cis30edbmpyg3"]
 
 [ext_resource type="PackedScene" uid="uid://dbjin8y5w1llq" path="res://player.tscn" id="1_wtla8"]
 [ext_resource type="Texture2D" uid="uid://bwkr8x333w7c" path="res://icon.svg" id="2_uqxer"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wb8ef"]
+radius = 8.0
+height = 24.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1yl2i"]
 texture = ExtResource("2_uqxer")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
@@ -534,10 +537,17 @@ sources/0 = SubResource("TileSetAtlasSource_dm42a")
 
 [node name="Player" parent="." instance=ExtResource("1_wtla8")]
 
+[node name="StuckChecker" type="Area2D" parent="Player"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="StuckCheckerShape" type="CollisionShape2D" parent="Player/StuckChecker"]
+shape = SubResource("CapsuleShape2D_wb8ef")
+
 [node name="TileMapPresent" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ve5ge")
 format = 2
-layer_0/tile_data = PackedInt32Array(131070, 196608, 2, 65536, 196608, 2, 131071, 196608, 2, 65537, 196608, 2, 65539, 196608, 2, 65538, 196608, 2, 131069, 196608, 2, 131068, 196608, 2, -131067, 196608, 2, -131066, 196608, 2, -131065, 196608, 2, -131064, 196608, 2, 131075, 196608, 2, 131074, 196608, 2, 131073, 196608, 2, 131072, 196608, 2, 196607, 196608, 2, 196606, 196608, 2, 196605, 196608, 2, 196604, 196608, 2, -65528, 196608, 2, -65529, 196608, 2, -65530, 196608, 2, -65531, 196608, 2, 65540, 196608, 2, 131076, 196608, 2)
+layer_0/tile_data = PackedInt32Array(131070, 196608, 2, 65536, 196608, 2, 131071, 196608, 2, 65537, 196608, 2, 65539, 196608, 2, 65538, 196608, 2, 131069, 196608, 2, 131068, 196608, 2, -131067, 196608, 2, -131066, 196608, 2, -131065, 196608, 2, -131064, 196608, 2, 131075, 196608, 2, 131074, 196608, 2, 131073, 196608, 2, 131072, 196608, 2, 196607, 196608, 2, 196606, 196608, 2, 196605, 196608, 2, 196604, 196608, 2, -65528, 196608, 2, -65529, 196608, 2, -65530, 196608, 2, -65531, 196608, 2, 65540, 196608, 2, 131076, 196608, 2, 65532, 262144, 2, 65533, 262144, 2, -3, 262144, 2, -4, 262144, 2)
 
 [node name="TileMapPast" type="TileMap" parent="."]
 visible = false
