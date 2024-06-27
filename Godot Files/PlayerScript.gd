@@ -34,6 +34,12 @@ func change_time(layer):
 		# Print to the log for debugging
 		print(is_stuck)
 		print("Player cannot change layer")
+		$"../CanvasLayer/HUD/CurrentTimeDisplay".text = "[color=#FF0000]ERROR: DESTINATION OBSTRUCTED"
+		await get_tree().create_timer(1).timeout
+		if collision_layer == PAST:
+			$"../CanvasLayer/HUD/CurrentTimeDisplay".text = "Past"
+		elif collision_layer == PRESENT:
+			$"../CanvasLayer/HUD/CurrentTimeDisplay".text = "Present"
 	else:
 		# Set the collision to the new layer
 		collision_layer = layer
@@ -73,9 +79,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("time_travel"):
 		# Get the current collision layers and masks and change them depending
 		# On the laer the player is currently on
-		if collision_layer == PAST and collision_mask == PAST:
+		if collision_layer == PAST:
 			change_time(PRESENT)
-		elif collision_layer == PRESENT and collision_mask == PRESENT:
+		elif collision_layer == PRESENT:
 			change_time(PAST)
 		else:
 			# Print an error if on another layer
