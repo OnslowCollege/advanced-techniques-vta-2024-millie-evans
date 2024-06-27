@@ -35,4 +35,7 @@ shape = SubResource("CapsuleShape2D_7a4y2")
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.15
 
+[node name="CooldownTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

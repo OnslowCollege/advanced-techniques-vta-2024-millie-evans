@@ -22,8 +22,8 @@ text = "Present"
 
 [node name="PauseButton" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 59.0
+offset_bottom = 31.0
 focus_mode = 0
 text = "PAUSE"
 
