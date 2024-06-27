@@ -1,12 +1,14 @@
 extends CharacterBody2D
 
 
-const SPEED = 250.0 # Speed the player moves at when using the movement keys
+const SPEED = 200.0 # Speed the player moves at when using the movement keys
+const SPEED_AIR = 250.0 # Speed the player moves at when in the air
 const JUMP_VELOCITY = -250.0 # Speed the player jumps at
 const PAST = 2 # Layer the past is on
 const PRESENT = 1 # Layer the present is on
 
 var can_jump = true
+var speed
 
 func _ready():
 	# Set the stuck checker layer to fix a bug
@@ -38,11 +40,13 @@ func change_time(layer):
 		collision_mask = layer
 		if layer == PRESENT:
 			print("Now in present")
+			$"../CanvasLayer/HUD/CurrentTimeDisplay".text = "Present"
 			# Show the present tilemap
 			$"../TileMapPast".hide()
 			$"../TileMapPresent".show()
 		elif layer == PAST:
 			print("Now in past")
+			$"../CanvasLayer/HUD/CurrentTimeDisplay".text = "Past"
 			# Show the past tilemap
 			$"../TileMapPresent".hide()
 			$"../TileMapPast".show()
@@ -79,10 +83,16 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * SPEED
+	if is_on_floor():
+		speed = SPEED
+		if Input.is_action_pressed("sprint"):
+			speed = speed * 1.25
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		speed = SPEED_AIR
+	if direction:
+		velocity.x = direction * speed
+	else:
+		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
 
