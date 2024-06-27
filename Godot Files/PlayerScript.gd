@@ -6,6 +6,8 @@ const JUMP_VELOCITY = -250.0 # Speed the player jumps at
 const PAST = 2 # Layer the past is on
 const PRESENT = 1 # Layer the present is on
 
+var can_jump = true
+
 func _ready():
 	# Set the stuck checker layer to fix a bug
 	# where the first time you tried changing time,
@@ -53,9 +55,16 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("move_jump") and is_on_floor():
+	# Handle jump and coyote time.
+	if can_jump == false and is_on_floor():
+		can_jump = true
+
+	if Input.is_action_just_pressed("move_jump") and can_jump:
 		velocity.y = JUMP_VELOCITY
+		can_jump = false
+
+	if (is_on_floor() == false) and can_jump and $CoyoteTimer.is_stopped():
+		$CoyoteTimer.start()
 
 	if Input.is_action_just_pressed("time_travel"):
 		# Get the current collision layers and masks and change them depending
@@ -76,3 +85,8 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_coyote_timer_timeout():
+	# Turn off jumping after coyote time expires
+	can_jump = false
