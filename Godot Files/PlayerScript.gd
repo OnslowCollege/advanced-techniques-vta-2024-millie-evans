@@ -23,9 +23,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func update_layer_ui():
 	if collision_layer == PAST:
-		$"../CanvasLayer/HUD/CurrentTimeDisplay".text = "Past"
+		$"../CanvasLayer/HUD/CurrentTimeDisplay".text = "Before"
 	elif collision_layer == PRESENT:
-		$"../CanvasLayer/HUD/CurrentTimeDisplay".text = "Present"
+		$"../CanvasLayer/HUD/CurrentTimeDisplay".text = "After"
 
 func change_time(layer):
 	# Set the stuck checker layer to the layer you are going to change to
