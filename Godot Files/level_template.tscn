@@ -563,16 +563,15 @@ layer_0/tile_data = PackedInt32Array(131068, 393216, 1, 131069, 393216, 1, 13107
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("3_g1dfj")]
 
 [node name="ParallaxBackgroundPast" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackgroundPast"]
 motion_scale = Vector2(0.8, 0.8)
 
 [node name="BackgroundTexture" type="TextureRect" parent="ParallaxBackgroundPast/Background"]
-offset_left = -1055.0
-offset_top = -494.0
-offset_right = 1181.0
-offset_bottom = 644.0
+offset_left = -1017.0
+offset_top = -500.0
+offset_right = 1219.0
+offset_bottom = 638.0
 texture = SubResource("GradientTexture1D_y4rpn")
 stretch_mode = 1
 
