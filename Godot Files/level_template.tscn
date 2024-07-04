@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cis30edbmpyg3"]
+[gd_scene load_steps=12 format=3 uid="uid://cis30edbmpyg3"]
 
 [ext_resource type="PackedScene" uid="uid://dbjin8y5w1llq" path="res://player.tscn" id="1_wtla8"]
 [ext_resource type="Texture2D" uid="uid://bwkr8x333w7c" path="res://icon.svg" id="2_uqxer"]
@@ -530,6 +530,19 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_dm42a")
 
+[sub_resource type="Gradient" id="Gradient_t3jgj"]
+offsets = PackedFloat32Array(0.980519, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y4rpn"]
+gradient = SubResource("Gradient_t3jgj")
+
+[sub_resource type="Gradient" id="Gradient_a8kbu"]
+offsets = PackedFloat32Array(0.935065, 1)
+colors = PackedColorArray(0.486275, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2jpa8"]
+gradient = SubResource("Gradient_a8kbu")
+
 [node name="MainNode" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_wtla8")]
@@ -549,15 +562,29 @@ layer_0/tile_data = PackedInt32Array(131068, 393216, 1, 131069, 393216, 1, 13107
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("3_g1dfj")]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackgroundPast" type="ParallaxBackground" parent="."]
+visible = false
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackgroundPast"]
 motion_scale = Vector2(0.8, 0.8)
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+[node name="BackgroundTexture" type="TextureRect" parent="ParallaxBackgroundPast/Background"]
+offset_left = -1055.0
+offset_top = -494.0
+offset_right = 1181.0
+offset_bottom = 644.0
+texture = SubResource("GradientTexture1D_y4rpn")
+stretch_mode = 1
+
+[node name="ParallaxBackgroundPresent" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackgroundPresent"]
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="BackgroundTexture" type="TextureRect" parent="ParallaxBackgroundPresent/Background"]
 offset_left = -757.0
 offset_top = -491.0
 offset_right = 974.0
 offset_bottom = 287.0
-texture = ExtResource("2_uqxer")
+texture = SubResource("GradientTexture1D_2jpa8")
 stretch_mode = 1

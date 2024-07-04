@@ -55,11 +55,17 @@ func change_time(layer):
 			# Show the present tilemap
 			$"../TileMapPast".hide()
 			$"../TileMapPresent".show()
+			# Show the present background
+			$"../ParallaxBackgroundPresent".show()
+			$"../ParallaxBackgroundPast".hide()
 		elif layer == PAST:
 			print("Now in past")
 			# Show the past tilemap
 			$"../TileMapPresent".hide()
 			$"../TileMapPast".show()
+			# Show the past background
+			$"../ParallaxBackgroundPresent".hide()
+			$"../ParallaxBackgroundPast".show()
 		else:
 			# Print an error if on another layer
 			print("Error with time swapping in function")
