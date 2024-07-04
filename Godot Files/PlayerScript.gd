@@ -81,7 +81,7 @@ func _physics_process(delta):
 	if (is_on_floor() == false) and can_jump and $CoyoteTimer.is_stopped():
 		$CoyoteTimer.start()
 
-	if Input.is_action_just_pressed("time_travel"):
+	if Input.is_action_just_pressed("time_travel") and Engine.time_scale != 0:
 		# Get the current collision layers and masks and change them depending
 		# On the laer the player is currently on
 		if can_swap:
