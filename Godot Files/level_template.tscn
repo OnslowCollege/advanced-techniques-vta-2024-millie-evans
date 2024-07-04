@@ -548,3 +548,16 @@ layer_0/tile_data = PackedInt32Array(131068, 393216, 1, 131069, 393216, 1, 13107
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("3_g1dfj")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_left = -757.0
+offset_top = -491.0
+offset_right = 974.0
+offset_bottom = 287.0
+texture = ExtResource("2_uqxer")
+stretch_mode = 1
