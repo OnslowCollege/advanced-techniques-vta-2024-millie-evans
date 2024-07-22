@@ -5,9 +5,11 @@ func pause():
 	if Engine.time_scale == 1:
 		Engine.time_scale = 0
 		print("Game paused")
+		$PauseMenu.show()
 	else:
 		Engine.time_scale = 1
 		print("Game unpaused")
+		$PauseMenu.hide()
 
 # This function is connected to the pause button's pressed signal
 func _on_pause_button_pressed():

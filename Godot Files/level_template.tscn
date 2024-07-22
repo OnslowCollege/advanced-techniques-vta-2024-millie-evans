@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://cis30edbmpyg3"]
 
 [ext_resource type="PackedScene" uid="uid://dbjin8y5w1llq" path="res://player.tscn" id="1_wtla8"]
-[ext_resource type="Texture2D" uid="uid://bwkr8x333w7c" path="res://icon.svg" id="2_uqxer"]
-[ext_resource type="PackedScene" uid="uid://y56mapdkoose" path="res://hud.tscn" id="3_g1dfj"]
+[ext_resource type="Texture2D" uid="uid://bwkr8x333w7c" path="res://assets/icon.svg" id="2_uqxer"]
+[ext_resource type="PackedScene" uid="uid://y56mapdkoose" path="res://menus/hud.tscn" id="3_g1dfj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1yl2i"]
 texture = ExtResource("2_uqxer")
@@ -563,6 +563,7 @@ layer_0/tile_data = PackedInt32Array(131068, 393216, 1, 131069, 393216, 1, 13107
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("3_g1dfj")]
 
 [node name="ParallaxBackgroundPast" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackgroundPast"]
 motion_scale = Vector2(0.8, 0.8)
@@ -576,6 +577,7 @@ texture = SubResource("GradientTexture1D_y4rpn")
 stretch_mode = 1
 
 [node name="ParallaxBackgroundPresent" type="ParallaxBackground" parent="."]
+follow_viewport_scale = 0.01
 
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackgroundPresent"]
 motion_scale = Vector2(0.8, 0.8)
@@ -584,6 +586,6 @@ motion_scale = Vector2(0.8, 0.8)
 offset_left = -757.0
 offset_top = -491.0
 offset_right = 974.0
-offset_bottom = 287.0
+offset_bottom = 290.0
 texture = SubResource("GradientTexture1D_2jpa8")
 stretch_mode = 1

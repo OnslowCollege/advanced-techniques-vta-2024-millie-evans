@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://y56mapdkoose"]
+[gd_scene load_steps=3 format=3 uid="uid://y56mapdkoose"]
 
-[ext_resource type="Script" path="res://hud.gd" id="1_fy75f"]
+[ext_resource type="Script" path="res://menus/menu scripts/hud.gd" id="1_fy75f"]
+[ext_resource type="PackedScene" uid="uid://v1igmiw1c8mx" path="res://menus/pause_menu.tscn" id="2_k4bnw"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -26,5 +27,9 @@ offset_right = 59.0
 offset_bottom = 31.0
 focus_mode = 0
 text = "PAUSE"
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_k4bnw")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

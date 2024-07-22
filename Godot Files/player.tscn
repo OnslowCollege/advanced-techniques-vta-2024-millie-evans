@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dbjin8y5w1llq"]
 
 [ext_resource type="Script" path="res://PlayerScript.gd" id="1_3t8cu"]
-[ext_resource type="Texture2D" uid="uid://bwkr8x333w7c" path="res://icon.svg" id="2_vtp81"]
+[ext_resource type="Texture2D" uid="uid://bwkr8x333w7c" path="res://assets/icon.svg" id="2_vtp81"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oa7gs"]
 
@@ -15,7 +15,7 @@ script = ExtResource("1_3t8cu")
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_oa7gs")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerCollision"]
+[node name="PlayerSprite" type="Sprite2D" parent="PlayerCollision"]
 position = Vector2(-5.96046e-08, -4.76837e-07)
 scale = Vector2(0.117188, 0.203125)
 texture = ExtResource("2_vtp81")
