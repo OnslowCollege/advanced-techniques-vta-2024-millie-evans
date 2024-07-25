@@ -17,6 +17,7 @@ func _ready():
 	# it wouldn't work
 	$StuckChecker.collision_layer = 3
 	$StuckChecker.collision_mask = 3
+	Engine.time_scale = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -112,6 +113,7 @@ func _physics_process(delta):
 	else:
 		speed = SPEED_AIR
 	if direction:
+		$PlayerCollision/Sprite2D/AnimationPlayer.play("walk")
 		velocity.x = direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
