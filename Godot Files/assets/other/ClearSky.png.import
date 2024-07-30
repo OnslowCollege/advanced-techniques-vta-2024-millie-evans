@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1fu6x8rw8xgk"
-path="res://.godot/imported/Player Spirtesheet test.png-c0a5dfea4b72fe0f5947d25e6149f990.ctex"
+uid="uid://bj4jg075ifx5k"
+path="res://.godot/imported/ClearSky.png-484419928cdff427945f388665882d4e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Player Spirtesheet test.png"
-dest_files=["res://.godot/imported/Player Spirtesheet test.png-c0a5dfea4b72fe0f5947d25e6149f990.ctex"]
+source_file="res://assets/other/ClearSky.png"
+dest_files=["res://.godot/imported/ClearSky.png-484419928cdff427945f388665882d4e.ctex"]
 
 [params]
 

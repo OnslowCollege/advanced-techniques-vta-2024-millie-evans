@@ -11,6 +11,8 @@ var can_jump = true
 var speed
 var can_swap = true
 
+@onready var animations = $AnimationPlayer
+
 func _ready():
 	# Set the stuck checker layer to fix a bug
 	# where the first time you tried changing time,
@@ -113,7 +115,6 @@ func _physics_process(delta):
 	else:
 		speed = SPEED_AIR
 	if direction:
-		$PlayerCollision/Sprite2D/AnimationPlayer.play("walk")
 		velocity.x = direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)

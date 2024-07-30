@@ -13,7 +13,7 @@ config_version=5
 config/name="Climate Change Game: Before and After (Working Title)"
 run/main_scene="res://menus/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://assets/icon.svg"
+config/icon="res://assets/other/icon.svg"
 
 [display]
 

@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://8u2qsikydx8k"]
+[gd_scene load_steps=9 format=3 uid="uid://8u2qsikydx8k"]
 
 [ext_resource type="Script" path="res://menus/menu scripts/main_menu.gd" id="1_xh2dh"]
+[ext_resource type="Texture2D" uid="uid://4hjfmg2koiey" path="res://assets/menudiorama/MainMenuBox.png" id="2_s1pro"]
+[ext_resource type="Script" path="res://menus/ParallaxBackgroundMenu.gd" id="3_88vyl"]
+[ext_resource type="Texture2D" uid="uid://dalbl506omso6" path="res://assets/menudiorama/MenuDioramaForeground.png" id="4_gq2ia"]
+[ext_resource type="Texture2D" uid="uid://cdeioxan6xid2" path="res://assets/other/OvercastSky.png" id="5_1hvtg"]
+[ext_resource type="Texture2D" uid="uid://beeesh6fmthf2" path="res://assets/menudiorama/MenuDioramaMidground.png" id="5_k11en"]
+
+[sub_resource type="Gradient" id="Gradient_d6xjf"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yryr4"]
+gradient = SubResource("Gradient_d6xjf")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,17 +21,65 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xh2dh")
 
-[node name="StartButton" type="Button" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "START"
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 1921.0
+offset_bottom = 1083.0
+texture = ExtResource("2_s1pro")
 
-[node name="QuitButton" type="Button" parent="."]
+[node name="ParallaxBackgroundPresent" type="ParallaxBackground" parent="."]
+follow_viewport_scale = 0.01
+script = ExtResource("3_88vyl")
+
+[node name="ParallaxLayerForeground" type="ParallaxLayer" parent="ParallaxBackgroundPresent"]
+position = Vector2(-11, 1080)
+motion_scale = Vector2(0.85, 0.85)
+
+[node name="ForegroundTexture" type="TextureRect" parent="ParallaxBackgroundPresent/ParallaxLayerForeground"]
+offset_left = -25040.0
+offset_top = -1073.33
+offset_right = 21069.0
+offset_bottom = 6.66602
+texture = ExtResource("4_gq2ia")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLayerMidground" type="ParallaxLayer" parent="ParallaxBackgroundPresent"]
+z_index = -1
+position = Vector2(-11, 1080)
+motion_scale = Vector2(0.75, 0.75)
+
+[node name="MidgroundTexture" type="TextureRect" parent="ParallaxBackgroundPresent/ParallaxLayerMidground"]
+offset_left = -25040.0
+offset_top = -1073.33
+offset_right = 21069.0
+offset_bottom = 6.66602
+texture = ExtResource("5_k11en")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLayerBackground" type="ParallaxLayer" parent="ParallaxBackgroundPresent"]
+z_index = -2
+position = Vector2(-11, 1080)
+
+[node name="BackgroundTexture" type="TextureRect" parent="ParallaxBackgroundPresent/ParallaxLayerBackground"]
+offset_left = -24736.0
+offset_top = -4706.0
+offset_right = 21373.0
+offset_bottom = 1527.0
+texture = ExtResource("5_1hvtg")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_top = 40.0
-offset_right = 42.0
-offset_bottom = 71.0
-text = "Quit"
+offset_right = 40.0
+offset_bottom = 40.0
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[node name="StartButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("GradientTexture2D_yryr4")
+
+[connection signal="pressed" from="HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
