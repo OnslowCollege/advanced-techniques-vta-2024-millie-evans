@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://8u2qsikydx8k"]
+[gd_scene load_steps=19 format=3 uid="uid://8u2qsikydx8k"]
 
 [ext_resource type="Script" path="res://menus/menu scripts/main_menu.gd" id="1_xh2dh"]
 [ext_resource type="Texture2D" uid="uid://4hjfmg2koiey" path="res://assets/menudiorama/MainMenuBox.png" id="2_s1pro"]
@@ -6,11 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://dalbl506omso6" path="res://assets/menudiorama/MenuDioramaForeground.png" id="4_gq2ia"]
 [ext_resource type="Texture2D" uid="uid://cdeioxan6xid2" path="res://assets/other/OvercastSky.png" id="5_1hvtg"]
 [ext_resource type="Texture2D" uid="uid://beeesh6fmthf2" path="res://assets/menudiorama/MenuDioramaMidground.png" id="5_k11en"]
-
-[sub_resource type="Gradient" id="Gradient_d6xjf"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_yryr4"]
-gradient = SubResource("Gradient_d6xjf")
+[ext_resource type="Texture2D" uid="uid://buvw0k2uvpt1u" path="res://assets/ui/menubuttons/StartButtonNormal.png" id="7_isgra"]
+[ext_resource type="Texture2D" uid="uid://sctuf3kt00k2" path="res://assets/ui/menubuttons/StartButtonHover.png" id="8_1wffa"]
+[ext_resource type="Texture2D" uid="uid://c05f74aaiccbo" path="res://assets/ui/menubuttons/StartButtonPressed.png" id="8_6efyc"]
+[ext_resource type="Texture2D" uid="uid://gv6uif0mmlov" path="res://assets/ui/menubuttons/OptionsButtonNormal.png" id="10_nmh6i"]
+[ext_resource type="Texture2D" uid="uid://dp1frubas7yk5" path="res://assets/ui/menubuttons/OptionsButtonPressed.png" id="11_jgkr1"]
+[ext_resource type="Texture2D" uid="uid://dlef5wmmm3ed1" path="res://assets/ui/menubuttons/OptionsButtonHover.png" id="12_dgmtn"]
+[ext_resource type="Texture2D" uid="uid://dxdi645t3qtuw" path="res://assets/ui/menubuttons/LevelsButtonNormal.png" id="13_q1e77"]
+[ext_resource type="Texture2D" uid="uid://dk14t27x10lee" path="res://assets/ui/menubuttons/LevelsButtonPressed.png" id="14_2p28o"]
+[ext_resource type="Texture2D" uid="uid://bxpw012n1r7s8" path="res://assets/ui/menubuttons/LevelsButtonHover.png" id="15_g40i7"]
+[ext_resource type="Texture2D" uid="uid://b0vydtru46fv6" path="res://assets/ui/menubuttons/QuitButtonNormal.png" id="16_q5rqv"]
+[ext_resource type="Texture2D" uid="uid://bndsjcxdq3s07" path="res://assets/ui/menubuttons/QuitButtonPressed.png" id="17_dbqsn"]
+[ext_resource type="Texture2D" uid="uid://bag1oy2bi2588" path="res://assets/ui/menubuttons/QuitButtonHover.png" id="18_ks4vk"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -21,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xh2dh")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="MenuBox" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 3.0
@@ -29,15 +36,15 @@ offset_right = 1921.0
 offset_bottom = 1083.0
 texture = ExtResource("2_s1pro")
 
-[node name="ParallaxBackgroundPresent" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackgroundMenu" type="ParallaxBackground" parent="."]
 follow_viewport_scale = 0.01
 script = ExtResource("3_88vyl")
 
-[node name="ParallaxLayerForeground" type="ParallaxLayer" parent="ParallaxBackgroundPresent"]
+[node name="ParallaxLayerForeground" type="ParallaxLayer" parent="ParallaxBackgroundMenu"]
 position = Vector2(-11, 1080)
 motion_scale = Vector2(0.85, 0.85)
 
-[node name="ForegroundTexture" type="TextureRect" parent="ParallaxBackgroundPresent/ParallaxLayerForeground"]
+[node name="ForegroundTexture" type="TextureRect" parent="ParallaxBackgroundMenu/ParallaxLayerForeground"]
 offset_left = -25040.0
 offset_top = -1073.33
 offset_right = 21069.0
@@ -46,12 +53,12 @@ texture = ExtResource("4_gq2ia")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ParallaxLayerMidground" type="ParallaxLayer" parent="ParallaxBackgroundPresent"]
+[node name="ParallaxLayerMidground" type="ParallaxLayer" parent="ParallaxBackgroundMenu"]
 z_index = -1
 position = Vector2(-11, 1080)
 motion_scale = Vector2(0.75, 0.75)
 
-[node name="MidgroundTexture" type="TextureRect" parent="ParallaxBackgroundPresent/ParallaxLayerMidground"]
+[node name="MidgroundTexture" type="TextureRect" parent="ParallaxBackgroundMenu/ParallaxLayerMidground"]
 offset_left = -25040.0
 offset_top = -1073.33
 offset_right = 21069.0
@@ -60,11 +67,11 @@ texture = ExtResource("5_k11en")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ParallaxLayerBackground" type="ParallaxLayer" parent="ParallaxBackgroundPresent"]
+[node name="ParallaxLayerBackground" type="ParallaxLayer" parent="ParallaxBackgroundMenu"]
 z_index = -2
 position = Vector2(-11, 1080)
 
-[node name="BackgroundTexture" type="TextureRect" parent="ParallaxBackgroundPresent/ParallaxLayerBackground"]
+[node name="BackgroundTexture" type="TextureRect" parent="ParallaxBackgroundMenu/ParallaxLayerBackground"]
 offset_left = -24736.0
 offset_top = -4706.0
 offset_right = 21373.0
@@ -74,12 +81,51 @@ stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -452.0
+offset_top = -92.0
+offset_right = 452.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 150
 
-[node name="StartButton" type="TextureButton" parent="HBoxContainer"]
+[node name="VBoxContainer1" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
-texture_normal = SubResource("GradientTexture2D_yryr4")
+theme_override_constants/separation = 75
 
-[connection signal="pressed" from="HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[node name="StartButton" type="TextureButton" parent="HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+texture_normal = ExtResource("7_isgra")
+texture_pressed = ExtResource("8_6efyc")
+texture_hover = ExtResource("8_1wffa")
+
+[node name="LevelsButton" type="TextureButton" parent="HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+texture_normal = ExtResource("13_q1e77")
+texture_pressed = ExtResource("14_2p28o")
+texture_hover = ExtResource("15_g40i7")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="OptionsButton" type="TextureButton" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("10_nmh6i")
+texture_pressed = ExtResource("11_jgkr1")
+texture_hover = ExtResource("12_dgmtn")
+
+[node name="QuitButton" type="TextureButton" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("16_q5rqv")
+texture_pressed = ExtResource("17_dbqsn")
+texture_hover = ExtResource("18_ks4vk")
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer1/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/QuitButton" to="." method="_on_quit_button_pressed"]
