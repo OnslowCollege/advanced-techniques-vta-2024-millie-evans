@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://v1igmiw1c8mx"]
+[gd_scene load_steps=11 format=3 uid="uid://v1igmiw1c8mx"]
 
 [ext_resource type="Script" path="res://menus/menu scripts/pause_menu.gd" id="1_1w7l4"]
+[ext_resource type="Texture2D" uid="uid://d034cmrm45ujy" path="res://assets/ui/pausebuttons/ResumeNormal.png" id="2_d7xbh"]
 [ext_resource type="Texture2D" uid="uid://dnf5oi104uecb" path="res://assets/ui/pausebuttons/QuitDesktopNormal.png" id="2_j5cor"]
 [ext_resource type="Texture2D" uid="uid://8q52dfxj506e" path="res://assets/ui/pausebuttons/QuitMenuNormal.png" id="2_tbqaq"]
 [ext_resource type="Texture2D" uid="uid://st2pynf0mu3h" path="res://assets/ui/pausebuttons/QuitDesktopPressed.png" id="3_6fjho"]
 [ext_resource type="Texture2D" uid="uid://1dqhpn6jlcy5" path="res://assets/ui/pausebuttons/QuitMenuPressed.png" id="3_dj0ha"]
+[ext_resource type="Texture2D" uid="uid://dfnou650317ba" path="res://assets/ui/pausebuttons/ResumePressed.png" id="3_e0vyb"]
+[ext_resource type="Texture2D" uid="uid://b3vueoy3nkkim" path="res://assets/ui/pausebuttons/ResumeHover.png" id="4_cj2br"]
 [ext_resource type="Texture2D" uid="uid://bp0v2g0a5gyao" path="res://assets/ui/pausebuttons/QuitMenuHover.png" id="4_om7mt"]
 [ext_resource type="Texture2D" uid="uid://ctnlhsmq36n62" path="res://assets/ui/pausebuttons/QuitDesktopHover.png" id="4_se4hh"]
 
@@ -42,6 +45,12 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ResumeButton" type="TextureButton" parent="OptionsVBox"]
+layout_mode = 2
+texture_normal = ExtResource("2_d7xbh")
+texture_pressed = ExtResource("3_e0vyb")
+texture_hover = ExtResource("4_cj2br")
+
 [node name="QuitMenuButton" type="TextureButton" parent="OptionsVBox"]
 layout_mode = 2
 texture_normal = ExtResource("2_tbqaq")
@@ -54,5 +63,6 @@ texture_normal = ExtResource("2_j5cor")
 texture_pressed = ExtResource("3_6fjho")
 texture_hover = ExtResource("4_se4hh")
 
+[connection signal="pressed" from="OptionsVBox/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="OptionsVBox/QuitMenuButton" to="." method="_on_quit_menu_button_pressed"]
 [connection signal="pressed" from="OptionsVBox/QuitDesktopButton" to="." method="_on_quit_desktop_button_pressed"]

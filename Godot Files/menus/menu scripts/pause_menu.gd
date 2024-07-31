@@ -8,3 +8,10 @@ func _on_quit_menu_button_pressed():
 
 func _on_quit_desktop_button_pressed():
 	get_tree().quit()
+
+func _on_resume_button_pressed():
+	Engine.time_scale = 1
+	print("Game unpaused")
+	$".".hide()
+	$"../CurrentTimeDisplay".show()
+	$"../PauseButton".show()
