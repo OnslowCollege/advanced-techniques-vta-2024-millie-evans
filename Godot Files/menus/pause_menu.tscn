@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://v1igmiw1c8mx"]
+[gd_scene load_steps=13 format=3 uid="uid://v1igmiw1c8mx"]
 
 [ext_resource type="Script" path="res://menus/menu scripts/pause_menu.gd" id="1_1w7l4"]
 [ext_resource type="Texture2D" uid="uid://d034cmrm45ujy" path="res://assets/ui/pausebuttons/ResumeNormal.png" id="2_d7xbh"]
 [ext_resource type="Texture2D" uid="uid://dnf5oi104uecb" path="res://assets/ui/pausebuttons/QuitDesktopNormal.png" id="2_j5cor"]
 [ext_resource type="Texture2D" uid="uid://8q52dfxj506e" path="res://assets/ui/pausebuttons/QuitMenuNormal.png" id="2_tbqaq"]
+[ext_resource type="FontFile" uid="uid://xhm4fgfaoitd" path="res://assets/ui/retro_computer_font.ttf" id="2_tja35"]
+[ext_resource type="Texture2D" uid="uid://dmfe1qw2nb730" path="res://assets/ui/PauseBackground.png" id="2_uh6op"]
 [ext_resource type="Texture2D" uid="uid://st2pynf0mu3h" path="res://assets/ui/pausebuttons/QuitDesktopPressed.png" id="3_6fjho"]
 [ext_resource type="Texture2D" uid="uid://1dqhpn6jlcy5" path="res://assets/ui/pausebuttons/QuitMenuPressed.png" id="3_dj0ha"]
 [ext_resource type="Texture2D" uid="uid://dfnou650317ba" path="res://assets/ui/pausebuttons/ResumePressed.png" id="3_e0vyb"]
@@ -20,15 +22,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1w7l4")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_uh6op")
+
 [node name="GamePaused" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -66.0
-offset_right = 66.0
+offset_left = -87.0
+offset_right = 87.0
 offset_bottom = 30.0
 grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("2_tja35")
 text = "GAME IS PAUSED"
 
 [node name="OptionsVBox" type="VBoxContainer" parent="."]
@@ -38,12 +47,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -65.0
-offset_top = -20.0
-offset_right = 65.0
-offset_bottom = 20.0
+offset_left = -420.0
+offset_top = -139.0
+offset_right = 420.0
+offset_bottom = 139.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(420, 160)
+theme_override_constants/separation = 25
 
 [node name="ResumeButton" type="TextureButton" parent="OptionsVBox"]
 layout_mode = 2

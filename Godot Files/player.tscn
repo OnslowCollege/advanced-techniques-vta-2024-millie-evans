@@ -1,15 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbjin8y5w1llq"]
+[gd_scene load_steps=8 format=3 uid="uid://dbjin8y5w1llq"]
 
 [ext_resource type="Script" path="res://PlayerScript.gd" id="1_3t8cu"]
 [ext_resource type="Texture2D" uid="uid://c1fu6x8rw8xgk" path="res://assets/other/Player Spirtesheet test.png" id="2_rk6io"]
+[ext_resource type="PackedScene" uid="uid://bxcqfqupk3l1s" path="res://robot companion.tscn" id="3_dyojv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oa7gs"]
-radius = 5.0
-height = 28.0
+radius = 19.0
+height = 114.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7a4y2"]
-radius = 4.0
-height = 24.0
+radius = 15.0
+height = 104.0
 
 [sub_resource type="Animation" id="Animation_a6n1g"]
 resource_name = "walk"
@@ -39,9 +40,9 @@ script = ExtResource("1_3t8cu")
 shape = SubResource("CapsuleShape2D_oa7gs")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
-offset = Vector2(0, -10)
-zoom = Vector2(5, 5)
+offset = Vector2(0, -50)
 position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="StuckChecker" type="Area2D" parent="."]
 collision_layer = 4
@@ -62,10 +63,13 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0566406, 0.0566406)
+scale = Vector2(0.23, 0.23)
 texture = ExtResource("2_rk6io")
 hframes = 2
 vframes = 2
+
+[node name="RobotCompanion" parent="." instance=ExtResource("3_dyojv")]
+position = Vector2(-80, -16)
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

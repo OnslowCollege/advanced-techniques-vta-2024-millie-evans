@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 
-const SPEED = 200.0 # Speed the player moves at when using the movement keys
-const SPEED_AIR = 250.0 # Speed the player moves at when in the air
-const JUMP_VELOCITY = -250.0 # Speed the player jumps at
+const SPEED = 800.0 # Speed the player moves at when using the movement keys
+const SPEED_AIR = 1000.0 # Speed the player moves at when in the air
+const JUMP_VELOCITY = -1000.0 # Speed the player jumps at
 const PAST = 2 # Layer the past is on
 const PRESENT = 1 # Layer the present is on
 

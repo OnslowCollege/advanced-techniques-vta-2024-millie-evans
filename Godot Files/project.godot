@@ -60,7 +60,12 @@ pause={
 2d_physics/layer_2="Past"
 2d_physics/layer_3="StoreUnstuck"
 
+[physics]
+
+2d/default_gravity=4000.0
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=3
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
