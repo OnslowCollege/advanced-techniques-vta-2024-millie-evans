@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://v1igmiw1c8mx"]
+
+[ext_resource type="Script" path="res://menus/menu scripts/pause_menu.gd" id="1_1w7l4"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1w7l4")
+
+[node name="GamePaused" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.0
+offset_right = 66.0
+offset_bottom = 30.0
+grow_horizontal = 2
+text = "GAME IS PAUSED"
+
+[node name="OptionsVBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -20.0
+offset_right = 65.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuitMenuButton" type="Button" parent="OptionsVBox"]
+layout_mode = 2
+text = "Quit to Menu
+"
+
+[node name="QuitDesktopButton" type="Button" parent="OptionsVBox"]
+layout_mode = 2
+text = "Quit to Desktop"
+
+[connection signal="pressed" from="OptionsVBox/QuitMenuButton" to="." method="_on_quit_menu_button_pressed"]
+[connection signal="pressed" from="OptionsVBox/QuitDesktopButton" to="." method="_on_quit_desktop_button_pressed"]

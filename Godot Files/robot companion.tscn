@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxcqfqupk3l1s"]
+
+[ext_resource type="Texture2D" uid="uid://dvjq1k3uwn5le" path="res://assets/RobotCompanion.png" id="1_osa72"]
+[ext_resource type="Texture2D" uid="uid://6plyor2uk3fq" path="res://assets/RobotParticles.png" id="2_7gfk1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_47mwl"]
+radius = 31.0644
+
+[node name="RobotCompanion" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_osa72")
+
+[node name="CompanionCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_47mwl")
+
+[node name="JetParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 32)
+amount = 10
+lifetime = 0.25
+texture = ExtResource("2_7gfk1")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 1)
+scale_amount_min = 0.1
+scale_amount_max = 0.2

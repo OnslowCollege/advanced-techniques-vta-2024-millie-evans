@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://y56mapdkoose"]
+
+[ext_resource type="Script" path="res://menus/menu scripts/hud.gd" id="1_fy75f"]
+[ext_resource type="PackedScene" uid="uid://v1igmiw1c8mx" path="res://menus/pause_menu.tscn" id="2_k4bnw"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fy75f")
+
+[node name="CurrentTimeDisplay" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 34.0
+offset_right = 351.0
+offset_bottom = 74.0
+bbcode_enabled = true
+text = "After"
+
+[node name="PauseButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 59.0
+offset_bottom = 31.0
+focus_mode = 0
+text = "PAUSE"
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_k4bnw")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

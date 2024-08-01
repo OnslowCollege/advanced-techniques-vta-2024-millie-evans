@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbjin8y5w1llq"]
+
+[ext_resource type="Script" path="res://PlayerScript.gd" id="1_3t8cu"]
+[ext_resource type="Texture2D" uid="uid://bwkr8x333w7c" path="res://icon.svg" id="2_vtp81"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oa7gs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idwcv"]
+radius = 8.0
+height = 26.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_3t8cu")
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_oa7gs")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerCollision"]
+position = Vector2(-5.96046e-08, -4.76837e-07)
+scale = Vector2(0.117188, 0.203125)
+texture = ExtResource("2_vtp81")
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+offset = Vector2(0, -10)
+zoom = Vector2(5, 5)
+
+[node name="Unstuck" type="RigidBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="UnstuckCollisionShape" type="CollisionShape2D" parent="Unstuck"]
+shape = SubResource("CapsuleShape2D_idwcv")
