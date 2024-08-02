@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://y56mapdkoose"]
+[gd_scene load_steps=6 format=3 uid="uid://y56mapdkoose"]
 
 [ext_resource type="Script" path="res://menus/menu scripts/hud.gd" id="1_fy75f"]
 [ext_resource type="PackedScene" uid="uid://v1igmiw1c8mx" path="res://menus/pause_menu.tscn" id="2_k4bnw"]
+[ext_resource type="Texture2D" uid="uid://bgv0yoa1jrhsu" path="res://assets/ui/PauseButtonNormal.png" id="3_bro6l"]
+[ext_resource type="Texture2D" uid="uid://citax2kuyx8ml" path="res://assets/ui/PauseButtonPressed.png" id="4_xaauv"]
+[ext_resource type="Texture2D" uid="uid://fsd0kmb0oew1" path="res://assets/ui/PauseButtonHover.png" id="5_7j44v"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -14,22 +17,25 @@ script = ExtResource("1_fy75f")
 
 [node name="CurrentTimeDisplay" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 34.0
-offset_right = 351.0
-offset_bottom = 74.0
+offset_left = 9.0
+offset_top = 74.0
+offset_right = 359.0
+offset_bottom = 114.0
 bbcode_enabled = true
 text = "After"
-
-[node name="PauseButton" type="Button" parent="."]
-layout_mode = 0
-offset_right = 59.0
-offset_bottom = 31.0
-focus_mode = 0
-text = "PAUSE"
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_k4bnw")]
 visible = false
 layout_mode = 1
+
+[node name="PauseButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+texture_normal = ExtResource("3_bro6l")
+texture_pressed = ExtResource("4_xaauv")
+texture_hover = ExtResource("5_7j44v")
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
