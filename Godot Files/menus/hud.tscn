@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://y56mapdkoose"]
+[gd_scene load_steps=7 format=3 uid="uid://y56mapdkoose"]
 
 [ext_resource type="Script" path="res://menus/menu scripts/hud.gd" id="1_fy75f"]
 [ext_resource type="PackedScene" uid="uid://v1igmiw1c8mx" path="res://menus/pause_menu.tscn" id="2_k4bnw"]
+[ext_resource type="FontFile" uid="uid://xhm4fgfaoitd" path="res://assets/ui/retro_computer_font.ttf" id="2_oq3e7"]
 [ext_resource type="Texture2D" uid="uid://bgv0yoa1jrhsu" path="res://assets/ui/PauseButtonNormal.png" id="3_bro6l"]
 [ext_resource type="Texture2D" uid="uid://citax2kuyx8ml" path="res://assets/ui/PauseButtonPressed.png" id="4_xaauv"]
 [ext_resource type="Texture2D" uid="uid://fsd0kmb0oew1" path="res://assets/ui/PauseButtonHover.png" id="5_7j44v"]
@@ -19,8 +20,10 @@ script = ExtResource("1_fy75f")
 layout_mode = 0
 offset_left = 9.0
 offset_top = 74.0
-offset_right = 359.0
-offset_bottom = 114.0
+offset_right = 1842.0
+offset_bottom = 159.0
+theme_override_fonts/normal_font = ExtResource("2_oq3e7")
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "After"
 

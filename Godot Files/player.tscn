@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://bxcqfqupk3l1s" path="res://robot companion.tscn" id="3_dyojv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oa7gs"]
-radius = 19.0
-height = 114.0
+radius = 24.0
+height = 100.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7a4y2"]
-radius = 15.0
-height = 104.0
+radius = 21.0
+height = 94.0
 
 [sub_resource type="Animation" id="Animation_a6n1g"]
 resource_name = "walk"
@@ -37,6 +37,7 @@ _data = {
 script = ExtResource("1_3t8cu")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_oa7gs")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
@@ -49,6 +50,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="StuckCheckerShape" type="CollisionShape2D" parent="StuckChecker"]
+position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_7a4y2")
 
 [node name="CoyoteTimer" type="Timer" parent="."]
