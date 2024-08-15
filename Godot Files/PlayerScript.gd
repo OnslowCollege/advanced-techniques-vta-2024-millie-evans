@@ -88,6 +88,8 @@ func _physics_process(delta):
 	# Handle jump and coyote time.
 	if can_jump == false and is_on_floor():
 		can_jump = true
+	if can_jump == false and $"." in $"../Water".get_overlapping_bodies():
+		can_jump = true
 
 	if Input.is_action_just_pressed("move_jump") and can_jump:
 		jump_vel = JUMP_VELOCITY
