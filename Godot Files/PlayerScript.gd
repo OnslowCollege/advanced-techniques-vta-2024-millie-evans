@@ -155,8 +155,9 @@ func _on_cooldown_timer_timeout():
 
 
 func _on_go_after_message_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and message01seen == false:
 		dialogue("Press F to return to the after")
+		message01seen == false
 
 
 func _on_helicopter_exit_body_entered(body):
@@ -166,7 +167,7 @@ func _on_helicopter_exit_body_entered(body):
 				dialogue("Exit Found")
 			else:
 				dialogue("You need a key. Maybe one could be found in the river?")
-		else:
+		elif collision_layer == PRESENT:
 			dialogue("It's broken.")
 
 
@@ -175,8 +176,8 @@ func _on_key_body_entered(body):
 		if collision_layer == PRESENT:
 			if not has_key:
 				has_key = true
-				print("key has been recovered")
+				dialogue("key has been recovered")
 			else:
-				print("already gained key")
+				dialogue("already gained key")
 		else:
 			pass
