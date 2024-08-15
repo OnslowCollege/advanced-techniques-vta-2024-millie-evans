@@ -6,10 +6,11 @@ const SPEED_AIR = 1100.0 # Speed the player moves at when in the air
 const JUMP_VELOCITY = -1250.0 # Speed the player jumps at
 const PAST = 2 # Layer the past is on
 const PRESENT = 1 # Layer the present is on
-
 var can_jump = true
 var speed
+var jump_vel
 var can_swap = true
+var has_key = false
 
 @onready var animations = $AnimationPlayer
 
@@ -35,6 +36,7 @@ func change_time(layer):
 	$StuckChecker.collision_layer = layer
 	$StuckChecker.collision_mask = layer
 	# Check what is colliding with the checker - ignore the player
+
 	var is_stuck = $StuckChecker.get_overlapping_bodies()
 	is_stuck.erase($".")
 	# Reset the stuck checker layer
@@ -61,6 +63,7 @@ func change_time(layer):
 			# Show the present background
 			$"../ParallaxBackgroundPresent".show()
 			$"../ParallaxBackgroundPast".hide()
+			$"../Water".position = Vector2(0, -64)
 		elif layer == PAST:
 			print("Now in past")
 			# Show the past tilemap
@@ -69,6 +72,7 @@ func change_time(layer):
 			# Show the past background
 			$"../ParallaxBackgroundPresent".hide()
 			$"../ParallaxBackgroundPast".show()
+			$"../Water".position = Vector2(0, 0)
 		else:
 			# Print an error if on another layer
 			print("Error with time swapping in function")
@@ -77,19 +81,23 @@ func change_time(layer):
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		if $"." in $"../Water".get_overlapping_bodies():
+			velocity.y += (gravity * 0.5) * delta
+		else: velocity.y += gravity * delta
 
 	# Handle jump and coyote time.
 	if can_jump == false and is_on_floor():
 		can_jump = true
 
 	if Input.is_action_just_pressed("move_jump") and can_jump:
-		velocity.y = JUMP_VELOCITY
+		jump_vel = JUMP_VELOCITY
+		if $"." in $"../Water".get_overlapping_bodies():
+			jump_vel = JUMP_VELOCITY * 0.95
+		velocity.y = jump_vel
 		can_jump = false
 
 	if (is_on_floor() == false) and can_jump and $CoyoteTimer.is_stopped():
 		$CoyoteTimer.start()
-
 	if Input.is_action_just_pressed("time_travel") and Engine.time_scale != 0:
 		# Get the current collision layers and masks and change them depending
 		# On the laer the player is currently on
@@ -114,10 +122,13 @@ func _physics_process(delta):
 			speed = speed * 1.25
 	else:
 		speed = SPEED_AIR
+	if $"." in $"../Water".get_overlapping_bodies():
+		speed = speed * 0.65
 	if direction:
 		velocity.x = direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
+
 
 	move_and_slide()
 
@@ -126,6 +137,28 @@ func _on_coyote_timer_timeout():
 	# Turn off jumping after coyote time expires
 	can_jump = false
 
+
 func _on_cooldown_timer_timeout():
 	# Turn on time travel on cooldown expiration
 	can_swap = true
+
+
+func _on_key_area_entered(_area):
+	if collision_layer == PRESENT:
+		if not has_key:
+			has_key = true
+			print("key has been recovered")
+		else:
+			print("already gained key")
+	else:
+		pass
+
+
+func _on_helicopter_exit_area_entered(_area):
+	if collision_layer == PAST:
+		if has_key:
+			print("exiting level")
+		else:
+			print("needs a key")
+	else:
+		pass

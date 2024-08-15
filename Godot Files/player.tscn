@@ -71,6 +71,7 @@ hframes = 2
 vframes = 2
 
 [node name="RobotCompanion" parent="." instance=ExtResource("3_dyojv")]
+visible = false
 position = Vector2(-80, -16)
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
