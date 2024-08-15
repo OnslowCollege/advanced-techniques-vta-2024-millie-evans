@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://cis30edbmpyg3"]
+[gd_scene load_steps=111 format=3 uid="uid://cis30edbmpyg3"]
 
 [ext_resource type="PackedScene" uid="uid://dbjin8y5w1llq" path="res://player.tscn" id="1_3f44y"]
 [ext_resource type="Texture2D" uid="uid://bcj41fllsdoxc" path="res://assets/urban/UnderRoadUrban.png" id="2_3oj2f"]
@@ -43,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://cgomv4unq25fk" path="res://assets/urban/ElevatorDestroyedWalls.png" id="28_1pmvk"]
 [ext_resource type="Texture2D" uid="uid://wqwcdiwjimkv" path="res://assets/urban/DestroyedBridge.png" id="31_u6ob2"]
 [ext_resource type="Texture2D" uid="uid://cehj71ph3bx8j" path="res://assets/urban/HeliDestroyed.png" id="33_6q1ua"]
+[ext_resource type="Texture2D" uid="uid://cvwhx7sbq7ews" path="res://assets/other/Road.png" id="39_4eier"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eguk7"]
 texture = ExtResource("6_n7ald")
@@ -1247,6 +1248,18 @@ offset_bottom = 6.66602
 texture = ExtResource("4_2so8v")
 stretch_mode = 1
 
+[node name="Black" type="ParallaxLayer" parent="ParallaxBackgroundPast"]
+position = Vector2(-8, 1080)
+motion_scale = Vector2(0.85, 0.85)
+
+[node name="BlackTexture" type="TextureRect" parent="ParallaxBackgroundPast/Black"]
+offset_left = -25040.0
+offset_top = -1073.33
+offset_right = 21069.0
+offset_bottom = 6.66602
+texture = ExtResource("39_4eier")
+stretch_mode = 1
+
 [node name="ParallaxLayerMidground" type="ParallaxLayer" parent="ParallaxBackgroundPast"]
 z_index = -1
 scale = Vector2(0.6, 0.6)
@@ -1287,6 +1300,18 @@ offset_bottom = 6.66602
 texture = ExtResource("6_erqhc")
 stretch_mode = 1
 
+[node name="Black" type="ParallaxLayer" parent="ParallaxBackgroundPresent"]
+position = Vector2(-8, 1080)
+motion_scale = Vector2(0.85, 0.85)
+
+[node name="BlackTexture" type="TextureRect" parent="ParallaxBackgroundPresent/Black"]
+offset_left = -25040.0
+offset_top = -1073.33
+offset_right = 21069.0
+offset_bottom = 6.66602
+texture = ExtResource("39_4eier")
+stretch_mode = 1
+
 [node name="ParallaxLayerMidground" type="ParallaxLayer" parent="ParallaxBackgroundPresent"]
 z_index = -1
 scale = Vector2(0.6, 0.6)
@@ -1304,14 +1329,15 @@ stretch_mode = 1
 z_index = -2
 
 [node name="BackgroundTexture" type="TextureRect" parent="ParallaxBackgroundPresent/ParallaxLayerBackground"]
-offset_left = -25306.0
-offset_top = -4429.0
-offset_right = 20803.0
-offset_bottom = 1804.0
+offset_left = -25279.0
+offset_top = -4301.0
+offset_right = 20830.0
+offset_bottom = 1932.0
 texture = ExtResource("9_phvr2")
 stretch_mode = 1
 
 [node name="Water" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, -64)
 collision_layer = 3
 collision_mask = 3
