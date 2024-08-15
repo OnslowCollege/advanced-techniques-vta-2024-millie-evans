@@ -12,6 +12,8 @@ var jump_vel
 var can_swap = true
 var has_key = false
 
+var message01seen = false
+
 @onready var animations = $AnimationPlayer
 
 func _ready():
@@ -21,6 +23,7 @@ func _ready():
 	$StuckChecker.collision_layer = 3
 	$StuckChecker.collision_mask = 3
 	Engine.time_scale = 1
+	dialogue("Press F to go before")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -77,6 +80,12 @@ func change_time(layer):
 			# Print an error if on another layer
 			print("Error with time swapping in function")
 		update_layer_ui()
+
+func dialogue(text):
+	$"../CanvasLayer/HUD/Dialogue/DialogueText".text = text
+	$"../CanvasLayer/HUD/Dialogue".show()
+	await get_tree().create_timer(5).timeout
+	$"../CanvasLayer/HUD/Dialogue".hide()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -145,22 +154,29 @@ func _on_cooldown_timer_timeout():
 	can_swap = true
 
 
-func _on_key_area_entered(_area):
-	if collision_layer == PRESENT:
-		if not has_key:
-			has_key = true
-			print("key has been recovered")
-		else:
-			print("already gained key")
-	else:
-		pass
+func _on_go_after_message_body_entered(body):
+	if body.name == "Player":
+		dialogue("Press F to return to the after")
 
 
-func _on_helicopter_exit_area_entered(_area):
-	if collision_layer == PAST:
-		if has_key:
-			print("exiting level")
+func _on_helicopter_exit_body_entered(body):
+	if body.name == "Player":
+		if collision_layer == PAST:
+			if has_key:
+				dialogue("Exit Found")
+			else:
+				dialogue("You need a key. Maybe one could be found in the river?")
 		else:
-			print("needs a key")
-	else:
-		pass
+			dialogue("It's broken.")
+
+
+func _on_key_body_entered(body):
+	if body.name == "Player":
+		if collision_layer == PRESENT:
+			if not has_key:
+				has_key = true
+				print("key has been recovered")
+			else:
+				print("already gained key")
+		else:
+			pass

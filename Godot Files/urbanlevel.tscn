@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://cis30edbmpyg3"]
+[gd_scene load_steps=112 format=3 uid="uid://cis30edbmpyg3"]
 
 [ext_resource type="PackedScene" uid="uid://dbjin8y5w1llq" path="res://player.tscn" id="1_3f44y"]
 [ext_resource type="Texture2D" uid="uid://bcj41fllsdoxc" path="res://assets/urban/UnderRoadUrban.png" id="2_3oj2f"]
@@ -1163,6 +1163,9 @@ size = Vector2(76, 77)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yenk"]
 size = Vector2(27920, 1866)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a12ik"]
+size = Vector2(161, 408)
+
 [node name="MainNode" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_3f44y")]
@@ -1346,5 +1349,17 @@ collision_mask = 3
 position = Vector2(1784, 822)
 shape = SubResource("RectangleShape2D_2yenk")
 
-[connection signal="area_entered" from="TileMapPast/HelicopterExit" to="Player" method="_on_helicopter_exit_area_entered"]
-[connection signal="area_entered" from="TileMapPresent/Key" to="Player" method="_on_key_area_entered"]
+[node name="MessageTriggers" type="Node" parent="."]
+
+[node name="GoAfterMessage" type="Area2D" parent="MessageTriggers"]
+position = Vector2(688, -264)
+collision_layer = 3
+collision_mask = 3
+
+[node name="GoAfterArea" type="CollisionShape2D" parent="MessageTriggers/GoAfterMessage"]
+position = Vector2(-69, -69)
+shape = SubResource("RectangleShape2D_a12ik")
+
+[connection signal="body_entered" from="TileMapPast/HelicopterExit" to="Player" method="_on_helicopter_exit_body_entered"]
+[connection signal="body_entered" from="TileMapPresent/Key" to="Player" method="_on_key_body_entered"]
+[connection signal="body_entered" from="MessageTriggers/GoAfterMessage" to="Player" method="_on_go_after_message_body_entered"]

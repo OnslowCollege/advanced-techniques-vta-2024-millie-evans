@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://y56mapdkoose"]
+[gd_scene load_steps=8 format=3 uid="uid://y56mapdkoose"]
 
 [ext_resource type="Script" path="res://menus/menu scripts/hud.gd" id="1_fy75f"]
 [ext_resource type="PackedScene" uid="uid://v1igmiw1c8mx" path="res://menus/pause_menu.tscn" id="2_k4bnw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bgv0yoa1jrhsu" path="res://assets/ui/PauseButtonNormal.png" id="3_bro6l"]
 [ext_resource type="Texture2D" uid="uid://citax2kuyx8ml" path="res://assets/ui/PauseButtonPressed.png" id="4_xaauv"]
 [ext_resource type="Texture2D" uid="uid://fsd0kmb0oew1" path="res://assets/ui/PauseButtonHover.png" id="5_7j44v"]
+[ext_resource type="Texture2D" uid="uid://dmfe1qw2nb730" path="res://assets/ui/PauseBackground.png" id="7_qm3j0"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -40,5 +41,31 @@ offset_bottom = 72.0
 texture_normal = ExtResource("3_bro6l")
 texture_pressed = ExtResource("4_xaauv")
 texture_hover = ExtResource("5_7j44v")
+
+[node name="Dialogue" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -616.0
+offset_top = -462.0
+offset_right = 593.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("7_qm3j0")
+expand_mode = 1
+
+[node name="DialogueText" type="RichTextLabel" parent="Dialogue"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 1200.0
+offset_bottom = 355.0
+theme_override_fonts/normal_font = ExtResource("2_oq3e7")
+theme_override_font_sizes/normal_font_size = 50
+text = "tutorial text goes here"
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
