@@ -179,6 +179,7 @@ texture_hover = ExtResource("23_msylf")
 
 [connection signal="pressed" from="MainMenuHbox/VBoxContainer1/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenuHbox/VBoxContainer1/LevelsButton" to="." method="_on_levels_button_pressed"]
+[connection signal="pressed" from="MainMenuHbox/VBoxContainer2/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainMenuHbox/VBoxContainer2/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="LevelsHbox/LevelsBackButton" to="." method="_on_levels_back_button_pressed"]
 [connection signal="pressed" from="LevelsHbox/Level1Button" to="." method="_on_level_1_button_pressed"]

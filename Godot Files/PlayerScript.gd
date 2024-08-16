@@ -11,8 +11,7 @@ var speed
 var jump_vel
 var can_swap = true
 var has_key = false
-
-var message01seen = false
+var rainon = Global.rainon
 
 @onready var animations = $AnimationPlayer
 
@@ -24,6 +23,10 @@ func _ready():
 	$StuckChecker.collision_mask = 3
 	Engine.time_scale = 1
 	dialogue("Press F to go before")
+	if rainon == true:
+		$"../TileMapPresent/RainPresent".show()
+	else:
+		$"../TileMapPresent/RainPresent".hide()
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -155,9 +158,8 @@ func _on_cooldown_timer_timeout():
 
 
 func _on_go_after_message_body_entered(body):
-	if body.name == "Player" and message01seen == false:
+	if body.name == "Player":
 		dialogue("Press F to return to the after")
-		message01seen == false
 
 
 func _on_helicopter_exit_body_entered(body):
@@ -165,6 +167,7 @@ func _on_helicopter_exit_body_entered(body):
 		if collision_layer == PAST:
 			if has_key:
 				dialogue("Exit Found")
+				get_tree().change_scene_to_file("res://end.tscn")
 			else:
 				dialogue("You need a key. Maybe one could be found in the river?")
 		elif collision_layer == PRESENT:

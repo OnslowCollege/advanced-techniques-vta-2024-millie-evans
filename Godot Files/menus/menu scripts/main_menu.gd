@@ -16,3 +16,7 @@ func _on_levels_back_button_pressed():
 
 func _on_level_1_button_pressed():
 	get_tree().change_scene_to_file("res://urbanlevel.tscn")
+
+
+func _on_options_button_pressed():
+	get_tree().change_scene_to_file("res://menus/options.tscn")
