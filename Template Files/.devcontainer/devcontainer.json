@@ -1,0 +1,92 @@
+{
+    "image": "ghcr.io/onslowcollege/pythontemplate:latest",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.mypy-type-checker",
+                "charliermarsh.ruff",
+                "eamodio.gitlens",
+                "GitHub.vscode-pull-request-github",
+                "yzhang.markdown-all-in-one",
+                "hediet.vscode-drawio",
+                "oderwat.indent-rainbow",
+                "usernamehw.errorlens",
+                "aaron-bond.better-comments",
+                "almenon.arepl",
+                "vsls-contrib.gitdoc",
+                "slightc.pip-manager",
+                "seunlanlege.action-buttons"
+            ],
+            "settings": {
+                "AREPL.telemetry": false,
+                "AREPL.skipLandingPage": true,
+                "AREPL.showFooter": false,
+                "editor.wordWrap": "on",
+                "editor.fontSize": 16,
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "charliermarsh.ruff",
+                "editor.formatOnSaveMode": "modificationsIfAvailable",
+                "editor.formatOnType": true,
+                "editor.rulers": [
+                    80
+                ],
+                "editor.tokenColorCustomizations": {
+                    "textMateRules": [
+                        {
+                            "scope": "string.quoted.docstring.multi.python",
+                            "settings": {
+                                "fontStyle": "italic"
+                            }
+                        },
+                        {
+                            "scope": "comment",
+                            "settings": {
+                                "fontStyle": "italic"
+                            }
+                        }
+                    ]
+                },
+                "gitdoc.commitValidationLevel": "none",
+                "gitdoc.enabled": true,
+                "gitlens.showWhatsNewAfterUpgrades": false,
+                "gitlens.showWelcomeOnInstall": false,
+                "pip-manager.source": "pypi",
+                "python.pythonPath": "/usr/local/bin/python",
+                "ruff.importStrategy": "useBundled",
+                "workbench.colorTheme": "Default Light Modern",
+                "actionButtons": {
+                    "commands": [
+                        {
+                            "cwd": "${workspaceFolder}",
+                            "name": "$(run-all) Debug",
+                            "useVsCodeApi": true,
+                            "command": "workbench.action.debug.start"
+                        },
+                        {
+                            "cwd": "{workspaceFolder}",
+                            "name": "$(pencil) Format file",
+                            "useVsCodeApi": true,
+                            "command": "editor.action.formatDocument"
+                        },
+                        {
+                            "name": "$(terminal-view-icon) New Terminal",
+                            "useVsCodeApi": true,
+                            "command": "workbench.action.terminal.newInActiveWorkspace"
+                        },
+                        {
+                            "name": "$(terminal-kill) Kill all Terminals",
+                            "useVsCodeApi": true,
+                            "command": "workbench.action.terminal.killAll"
+                        }
+                    ],
+                    "defaultColor": "none",
+                    "reloadButton": "↻",
+                    "loadNpmCommands": false
+                }
+            }
+        }
+    },
+    "postCreateCommand": "python3 -m pip install pytest"
+}

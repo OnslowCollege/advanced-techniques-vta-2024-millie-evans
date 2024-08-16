@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2w03kkogs46d"]
+
+[ext_resource type="Texture2D" uid="uid://dmfe1qw2nb730" path="res://assets/ui/PauseBackground.png" id="1_8wylp"]
+[ext_resource type="Script" path="res://end.gd" id="1_jfq6j"]
+[ext_resource type="FontFile" uid="uid://xhm4fgfaoitd" path="res://assets/ui/retro_computer_font.ttf" id="2_pr3ts"]
+[ext_resource type="Texture2D" uid="uid://8q52dfxj506e" path="res://assets/ui/pausebuttons/QuitMenuNormal.png" id="3_xr0aa"]
+[ext_resource type="Texture2D" uid="uid://1dqhpn6jlcy5" path="res://assets/ui/pausebuttons/QuitMenuPressed.png" id="4_cccau"]
+[ext_resource type="Texture2D" uid="uid://bp0v2g0a5gyao" path="res://assets/ui/pausebuttons/QuitMenuHover.png" id="5_j4tw2"]
+[ext_resource type="Texture2D" uid="uid://dnf5oi104uecb" path="res://assets/ui/pausebuttons/QuitDesktopNormal.png" id="6_3yc5k"]
+[ext_resource type="Texture2D" uid="uid://st2pynf0mu3h" path="res://assets/ui/pausebuttons/QuitDesktopPressed.png" id="7_ty07o"]
+[ext_resource type="Texture2D" uid="uid://ctnlhsmq36n62" path="res://assets/ui/pausebuttons/QuitDesktopHover.png" id="8_bssyu"]
+
+[node name="End" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jfq6j")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_8wylp")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -358.0
+offset_top = -145.5
+offset_right = 358.0
+offset_bottom = -78.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_pr3ts")
+theme_override_font_sizes/normal_font_size = 50
+text = "THANKS FOR PLAYING"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -70.0
+offset_right = 420.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuitMenuButton" type="TextureButton" parent="Background/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_xr0aa")
+texture_pressed = ExtResource("4_cccau")
+texture_hover = ExtResource("5_j4tw2")
+
+[node name="QuitDesktopButton" type="TextureButton" parent="Background/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_3yc5k")
+texture_pressed = ExtResource("7_ty07o")
+texture_hover = ExtResource("8_bssyu")
+
+[connection signal="pressed" from="Background/VBoxContainer/QuitMenuButton" to="." method="_on_quit_menu_button_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/QuitDesktopButton" to="." method="_on_quit_desktop_button_pressed"]

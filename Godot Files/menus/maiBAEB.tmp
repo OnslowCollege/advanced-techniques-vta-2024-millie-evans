@@ -1,0 +1,184 @@
+[gd_scene load_steps=28 format=3 uid="uid://8u2qsikydx8k"]
+
+[ext_resource type="Script" path="res://menus/menu scripts/main_menu.gd" id="1_xh2dh"]
+[ext_resource type="Texture2D" uid="uid://4hjfmg2koiey" path="res://assets/menudiorama/MainMenuBox.png" id="2_s1pro"]
+[ext_resource type="Script" path="res://menus/ParallaxBackgroundMenu.gd" id="3_88vyl"]
+[ext_resource type="Texture2D" uid="uid://dalbl506omso6" path="res://assets/menudiorama/MenuDioramaForeground.png" id="4_gq2ia"]
+[ext_resource type="Texture2D" uid="uid://cdeioxan6xid2" path="res://assets/other/OvercastSky.png" id="5_1hvtg"]
+[ext_resource type="Texture2D" uid="uid://beeesh6fmthf2" path="res://assets/menudiorama/MenuDioramaMidground.png" id="5_k11en"]
+[ext_resource type="Texture2D" uid="uid://buvw0k2uvpt1u" path="res://assets/ui/menubuttons/StartButtonNormal.png" id="7_isgra"]
+[ext_resource type="Texture2D" uid="uid://sctuf3kt00k2" path="res://assets/ui/menubuttons/StartButtonHover.png" id="8_1wffa"]
+[ext_resource type="Texture2D" uid="uid://c05f74aaiccbo" path="res://assets/ui/menubuttons/StartButtonPressed.png" id="8_6efyc"]
+[ext_resource type="Texture2D" uid="uid://gv6uif0mmlov" path="res://assets/ui/menubuttons/OptionsButtonNormal.png" id="10_nmh6i"]
+[ext_resource type="Texture2D" uid="uid://dp1frubas7yk5" path="res://assets/ui/menubuttons/OptionsButtonPressed.png" id="11_jgkr1"]
+[ext_resource type="Texture2D" uid="uid://dlef5wmmm3ed1" path="res://assets/ui/menubuttons/OptionsButtonHover.png" id="12_dgmtn"]
+[ext_resource type="Texture2D" uid="uid://dxdi645t3qtuw" path="res://assets/ui/menubuttons/LevelsButtonNormal.png" id="13_q1e77"]
+[ext_resource type="Texture2D" uid="uid://dk14t27x10lee" path="res://assets/ui/menubuttons/LevelsButtonPressed.png" id="14_2p28o"]
+[ext_resource type="Texture2D" uid="uid://bxpw012n1r7s8" path="res://assets/ui/menubuttons/LevelsButtonHover.png" id="15_g40i7"]
+[ext_resource type="Texture2D" uid="uid://b0vydtru46fv6" path="res://assets/ui/menubuttons/QuitButtonNormal.png" id="16_q5rqv"]
+[ext_resource type="Texture2D" uid="uid://bndsjcxdq3s07" path="res://assets/ui/menubuttons/QuitButtonPressed.png" id="17_dbqsn"]
+[ext_resource type="Texture2D" uid="uid://bag1oy2bi2588" path="res://assets/ui/menubuttons/QuitButtonHover.png" id="18_ks4vk"]
+[ext_resource type="Texture2D" uid="uid://djq73ec3io2sq" path="res://assets/ui/menubuttons/Level1ButtonNormal.png" id="19_pywat"]
+[ext_resource type="Texture2D" uid="uid://noyrt5e53xxw" path="res://assets/ui/menubuttons/BackButtonNormal.png" id="19_xkxfw"]
+[ext_resource type="Texture2D" uid="uid://b6hp6n7s423jk" path="res://assets/ui/menubuttons/BackButtonPressed.png" id="20_4md42"]
+[ext_resource type="Texture2D" uid="uid://4igwwi6lcbsa" path="res://assets/ui/menubuttons/Level1ButtonPressed.png" id="20_5ejog"]
+[ext_resource type="Texture2D" uid="uid://sm0qeiikmvu8" path="res://assets/ui/menubuttons/BackButtonHover.png" id="20_72em8"]
+[ext_resource type="Texture2D" uid="uid://21s7cxl2hum6" path="res://assets/ui/menubuttons/Level1ButtonHover.png" id="21_8ce1g"]
+[ext_resource type="Texture2D" uid="uid://d2k8twjq683a2" path="res://assets/ui/menubuttons/LevelLockedButtonNormal.png" id="22_ekvlx"]
+[ext_resource type="Texture2D" uid="uid://bgpysxbwb5nk8" path="res://assets/ui/menubuttons/LevelLockedButtonPressed.png" id="23_d3bci"]
+[ext_resource type="Texture2D" uid="uid://bln2or2s7a7qn" path="res://assets/ui/menubuttons/LevelLockedButtonHover.png" id="23_msylf"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xh2dh")
+
+[node name="MenuBox" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 1921.0
+offset_bottom = 1083.0
+texture = ExtResource("2_s1pro")
+
+[node name="ParallaxBackgroundMenu" type="ParallaxBackground" parent="."]
+follow_viewport_scale = 0.01
+script = ExtResource("3_88vyl")
+
+[node name="ParallaxLayerForeground" type="ParallaxLayer" parent="ParallaxBackgroundMenu"]
+position = Vector2(-11, 1080)
+motion_scale = Vector2(0.85, 0.85)
+
+[node name="ForegroundTexture" type="TextureRect" parent="ParallaxBackgroundMenu/ParallaxLayerForeground"]
+offset_left = -25040.0
+offset_top = -1073.33
+offset_right = 21069.0
+offset_bottom = 6.66602
+texture = ExtResource("4_gq2ia")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLayerMidground" type="ParallaxLayer" parent="ParallaxBackgroundMenu"]
+z_index = -1
+position = Vector2(-11, 1080)
+motion_scale = Vector2(0.75, 0.75)
+
+[node name="MidgroundTexture" type="TextureRect" parent="ParallaxBackgroundMenu/ParallaxLayerMidground"]
+offset_left = -25040.0
+offset_top = -1073.33
+offset_right = 21069.0
+offset_bottom = 6.66602
+texture = ExtResource("5_k11en")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLayerBackground" type="ParallaxLayer" parent="ParallaxBackgroundMenu"]
+z_index = -2
+position = Vector2(-11, 1080)
+
+[node name="BackgroundTexture" type="TextureRect" parent="ParallaxBackgroundMenu/ParallaxLayerBackground"]
+offset_left = -24736.0
+offset_top = -4706.0
+offset_right = 21373.0
+offset_bottom = 1527.0
+texture = ExtResource("5_1hvtg")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MainMenuHbox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -452.0
+offset_top = -92.0
+offset_right = 452.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 150
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="MainMenuHbox"]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="StartButton" type="TextureButton" parent="MainMenuHbox/VBoxContainer1"]
+layout_mode = 2
+texture_normal = ExtResource("7_isgra")
+texture_pressed = ExtResource("8_6efyc")
+texture_hover = ExtResource("8_1wffa")
+
+[node name="LevelsButton" type="TextureButton" parent="MainMenuHbox/VBoxContainer1"]
+layout_mode = 2
+texture_normal = ExtResource("13_q1e77")
+texture_pressed = ExtResource("14_2p28o")
+texture_hover = ExtResource("15_g40i7")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenuHbox"]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="OptionsButton" type="TextureButton" parent="MainMenuHbox/VBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("10_nmh6i")
+texture_pressed = ExtResource("11_jgkr1")
+texture_hover = ExtResource("12_dgmtn")
+
+[node name="QuitButton" type="TextureButton" parent="MainMenuHbox/VBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("16_q5rqv")
+texture_pressed = ExtResource("17_dbqsn")
+texture_hover = ExtResource("18_ks4vk")
+
+[node name="LevelsHbox" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -160.0
+offset_right = 205.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="LevelsBackButton" type="TextureButton" parent="LevelsHbox"]
+layout_mode = 2
+texture_normal = ExtResource("19_xkxfw")
+texture_pressed = ExtResource("20_4md42")
+texture_hover = ExtResource("20_72em8")
+
+[node name="Level1Button" type="TextureButton" parent="LevelsHbox"]
+layout_mode = 2
+texture_normal = ExtResource("19_pywat")
+texture_pressed = ExtResource("20_5ejog")
+texture_hover = ExtResource("21_8ce1g")
+
+[node name="Level2Button" type="TextureButton" parent="LevelsHbox"]
+layout_mode = 2
+texture_normal = ExtResource("22_ekvlx")
+texture_pressed = ExtResource("23_d3bci")
+texture_hover = ExtResource("23_msylf")
+
+[node name="Level3Button" type="TextureButton" parent="LevelsHbox"]
+layout_mode = 2
+texture_normal = ExtResource("22_ekvlx")
+texture_pressed = ExtResource("23_d3bci")
+texture_hover = ExtResource("23_msylf")
+
+[connection signal="pressed" from="MainMenuHbox/VBoxContainer1/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenuHbox/VBoxContainer1/LevelsButton" to="." method="_on_levels_button_pressed"]
+[connection signal="pressed" from="MainMenuHbox/VBoxContainer2/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="LevelsHbox/LevelsBackButton" to="." method="_on_levels_back_button_pressed"]
+[connection signal="pressed" from="LevelsHbox/Level1Button" to="." method="_on_level_1_button_pressed"]
